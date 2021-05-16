@@ -15,3 +15,4 @@ build/
 doc/api/
 libpdfium.dylib
 include
+headers

@@ -153,6 +153,7 @@ name = "convert"
 version = "0.1.0"
 dependencies = [
  "image",
+ "libc",
  "pdfium_rs",
 ]
 

@@ -1,13 +1,12 @@
 use image::{Bgra, ImageBuffer};
 use pdfium_rs::{BitmapFormat, Library};
-static DUMMY_PDF: &'static [u8] = include_bytes!("../dummy.pdf");
 
-fn main() {
+pub fn raster<'a>(buffer: &'a [u8], path: &str) {
     // initialize library
     let library = Library::init().unwrap();
 
     // load document
-    let document = library.document_from_bytes(DUMMY_PDF).unwrap();
+    let document = library.document_from_bytes(buffer).unwrap();
 
     // load page
     let page = document.page(0).unwrap();
@@ -43,5 +42,5 @@ fn main() {
 
     // there is at least one none white pixel
     // assert!(image.pixels().any(|x| *x != Bgra::<u8>([0xFF; 4])));
-    image.save("dummy.jpeg").unwrap();
+    image.save(path).unwrap();
 }

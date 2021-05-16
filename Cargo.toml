@@ -5,7 +5,14 @@ authors = ["Sacha Arbonel <sacha.arbonel@hotmail.fr>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "raster_pdf"
+crate-type = ["cdylib"] #dynamic library
 
 [dependencies]
+libc = "*"
 image = "0.23.14"
 pdfium_rs = { git = "https://github.com/asafigan/pdfium_rs", branch = "main"}
+
+[profile.dev]
+rpath = true
